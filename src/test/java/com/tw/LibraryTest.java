@@ -59,6 +59,14 @@ public class LibraryTest {
         assertEquals(systemOut(),result);
     }
 
+    @Test
+    public void testShowSecondInterface() {
+        String result = "请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n";
+        Library library = new Library();
+        library.showSecond();
+        assertEquals(systemOut(),result);
+    }
+
 
     private String systemOut() {
         return outContent.toString();

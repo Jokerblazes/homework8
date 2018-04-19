@@ -15,4 +15,8 @@ public class Library {
     public void showFirst() {
         System.out.println("请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：");
     }
+
+    public void showSecond() {
+        System.out.println("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：");
+    }
 }
