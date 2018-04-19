@@ -51,6 +51,15 @@ public class LibraryTest {
 
     }
 
+    @Test
+    public void testShowFirstInterface() {
+        String result = "请输入学生信息（格式：姓名, 学号, 学科: 成绩, ...），按回车提交：\n";
+        Library library = new Library();
+        library.showFirst();
+        assertEquals(systemOut(),result);
+    }
+
+
     private String systemOut() {
         return outContent.toString();
     }
