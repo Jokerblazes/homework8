@@ -1,7 +1,11 @@
 package com.tw;
 
+import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.LinkedList;
 
 import static org.hamcrest.core.Is.is;
@@ -10,6 +14,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class LibraryTest {
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setup() {
+        System.setOut(new PrintStream(outContent));
+    }
     @Test
     public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
@@ -29,4 +39,19 @@ public class LibraryTest {
 
     }
 
+    @Test
+    public void testShowMainInterface() {
+        String result = "1. 添加学生\n" +
+                "2. 生成成绩单\n" +
+                "3. 退出\n" +
+                "请输入你的选择（1～3）：\n";
+        Library library = new Library();
+        library.showMain();
+        assertEquals(systemOut(),result);
+
+    }
+
+    private String systemOut() {
+        return outContent.toString();
+    }
 }
