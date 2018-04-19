@@ -75,6 +75,15 @@ public class LibraryTest {
         assertEquals(systemOut(),result);
     }
 
+    @Test
+    public void testShowSecondInterfaceIsFault() {
+        String result = "请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：\n";
+        Library library = new Library();
+        library.showSecondFault();
+        assertEquals(systemOut(),result);
+    }
+
+
 
 
 

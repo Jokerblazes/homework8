@@ -23,4 +23,10 @@ public class Library {
     public void showFirstFault() {
         System.out.println("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：");
     }
+
+    public void showSecondFault() {
+        System.out.println("请按正确的格式输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：");
+    }
+
+
 }
