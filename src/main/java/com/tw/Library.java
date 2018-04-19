@@ -19,4 +19,8 @@ public class Library {
     public void showSecond() {
         System.out.println("请输入要打印的学生的学号（格式： 学号, 学号,...），按回车提交：");
     }
+
+    public void showFirstFault() {
+        System.out.println("请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：");
+    }
 }

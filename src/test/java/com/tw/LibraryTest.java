@@ -67,6 +67,16 @@ public class LibraryTest {
         assertEquals(systemOut(),result);
     }
 
+    @Test
+    public void testShowFirstInterfaceIsFault() {
+        String result = "请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n";
+        Library library = new Library();
+        library.showFirstFault();
+        assertEquals(systemOut(),result);
+    }
+
+
+
 
     private String systemOut() {
         return outContent.toString();
