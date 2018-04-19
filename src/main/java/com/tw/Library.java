@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Library {
     private Map<Integer, Student> studentMap;
     private Set<String> classes;
+    private Scanner scanner = new Scanner(System.in);
 
     public Library() {
         studentMap = new HashMap<>();
@@ -47,20 +48,23 @@ public class Library {
     }
 
 
-    public void addStudent(String content) {
+    public boolean addStudent(String content) {
         Student student;
         try {
             student = checkInput(content);
         } catch (NumberFormatException e) {
             showFirstFault();
-            return;
+            return false;
         }
         if (student != null) {
             studentMap.put(student.getId(), student);
             addClass(student);
             showAddStudentSuccess(student.getName());
-        } else
+        } else {
             showFirstFault();
+            return false;
+        }
+        return true;
     }
 
     public void showAddStudentSuccess(String name) {
@@ -91,20 +95,21 @@ public class Library {
         student.getScoreMap().forEach((key,value) -> classes.add(key));
     }
 
-    public void createTranscript(String content) {
+    public boolean createTranscript(String content) {
         List<Student> students;
         try {
             students = checkSecondInput(content);
         } catch (NumberFormatException e) {
             showSecondFault();
-            return;
+            return false;
         }
         if (students != null) {
             showCreateTranscriptSuccess(students);
         } else {
             showSecondFault();
+            return false;
         }
-
+        return true;
     }
 
     public void showCreateTranscriptSuccess(List<Student> students) {
@@ -156,5 +161,37 @@ public class Library {
                 students.add(student);
         }
         return students;
+    }
+
+    public void showPage() {
+        int n;
+        while (true) {
+            System.out.println("1. 添加学生\n" +
+                    "2. 生成成绩单\n" +
+                    "3. 退出\n" +
+                    "请输入你的选择（1～3）：");
+            n = Integer.parseInt(scanner.nextLine());
+            if (n == 1) {
+                input1();
+            } else if (n == 2) {
+                input2();
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void input2() {
+        showSecond();
+        boolean result = createTranscript(scanner.nextLine());
+        while (!result)
+            result = createTranscript(scanner.nextLine());
+    }
+
+    private void input1() {
+        showFirst();
+        boolean result = addStudent(scanner.nextLine());
+        while (!result)
+            result = addStudent(scanner.nextLine());
     }
 }
