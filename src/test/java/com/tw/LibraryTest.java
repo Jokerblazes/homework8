@@ -83,6 +83,24 @@ public class LibraryTest {
         assertEquals(systemOut(),result);
     }
 
+    @Test
+    public void testAddStudentSuccess() {
+        String result1 = "学生小王的成绩被添加\n";
+        Library library = new Library();
+        library.addStudent("小王, 14, 科学: 14, 数学: 89");
+        assertEquals(systemOut(),result1);
+    }
+
+    @Test
+    public void testAddStudentFail() {
+        String result2 = "请按正确的格式输入（格式：姓名, 学号, 学科: 成绩, ...）：\n";
+        Library library = new Library();
+        library.addStudent("小王, 14, 科学,14");
+        assertEquals(systemOut(),result2);
+    }
+
+
+
 
 
 
